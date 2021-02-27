@@ -12,6 +12,8 @@ Currently, it uses dplyr to work with the data. It will eventually use ggplot2 t
 
 ### Change Log
 
+* 2021-02-26: Added for loops to both state subset script and tally script so the code can process multiple states. 
+* 2021-02-26: Separated dplyr script into a function that the main script calls to
 * 2021-02-25: Created second script to use dplyr to tally up count of the cities and counties in a selected state that have different tranportation type data
 * 2021-02-24: Added gitkeep to all major directories and created & linked project repo to Github
 * 2021-02-22: Initialized a git repository for this project
