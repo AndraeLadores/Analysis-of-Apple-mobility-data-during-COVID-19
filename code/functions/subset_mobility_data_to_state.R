@@ -20,8 +20,8 @@ subset_mobility_data_to_state <- function(input_file_name,
 
   # check that the subsetted data actually has data in it
   if (nrow(state_data) == 0) {
-    stop("ERROR, no rows matching given state name. Maybe a typo?")
-  }
+    stop("ERROR, no rows matching given state name. Possibly a typo?")
+    }
 
   # save the state data into a new csv file in the output directory
   write.csv(state_data, file = paste0("output/",

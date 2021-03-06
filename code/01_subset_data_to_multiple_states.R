@@ -7,6 +7,7 @@
 # Andrae Ladores
 # vcladores@dons.usfca.edu
 # February 21, 2021
+# Updated February 25, 2021 to allow for loops
 
 # load created function
 source("code/functions/subset_mobility_data_to_state.R")
