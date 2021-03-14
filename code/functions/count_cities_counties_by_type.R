@@ -6,12 +6,12 @@
 # February, 25, 2021
 # vcladores@dons.usfca.edu
 
+# load in "dplyr" package
+library("dplyr")
+
 # function to count and tally transportation types within cities or counties
 # a previously subsetted state
 count_cities_counties_by_type <- function(input_subsetted_file_name) {
-
-   # load in "dplyr" package
-  library("dplyr")
 
   # we want to get a count of the number of cities and counties
   # in a given state that have transportation data
@@ -19,7 +19,7 @@ count_cities_counties_by_type <- function(input_subsetted_file_name) {
   # namely the stave csv files that were already subsetted
 
   # load in the dataset from the previous script
-  state_to_count_cities_counties <- read.csv(input_subsetted_file_name)
+  state_to_count_cities_counties <- readr::read_csv(input_subsetted_file_name)
 
   if (nrow(state_to_count_cities_counties) == 0) {
     stop("ERROR. Check file name for typos and if it exists (subsetted) -
@@ -35,8 +35,8 @@ count_cities_counties_by_type <- function(input_subsetted_file_name) {
 
 
    # write out the result of the dplyr chain
-  write.csv(count_cities_counties_by_type,
-            file = paste0("output/",
+  readr::write_csv(count_cities_counties_by_type,
+            file = paste0("output/subsetted_states_counted/",
                           "cities",
                           "_",
                           "counties",
@@ -47,4 +47,5 @@ count_cities_counties_by_type <- function(input_subsetted_file_name) {
                             basename(input_subsetted_file_name)),
                           ".csv"))
 
+  return(count_cities_counties_by_type)
 }
