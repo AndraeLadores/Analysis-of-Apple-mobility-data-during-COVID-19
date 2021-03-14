@@ -14,7 +14,7 @@ knitr::opts_chunk$set(echo = TRUE, message = TRUE)
 
 ```{r set-parameters}
 # Set the state to work with
-state_to_analyze <- "New York"
+state_to_analyze <- "North Carolina"
 
 # sanitizing the state name for output files
 state_no_space <- gsub(state_to_analyze,
@@ -58,7 +58,6 @@ The state that this document will analyze is `r state_to_analyze`.
 
 ```{r subset-state}
 # subset out to the chosen state using the variables set above
-# only shows up as "Null" in the environment
 state_subset <- subset_mobility_data_to_state(
   input_file_name = global_file_to_process,
   state_to_subset = state_to_analyze)
@@ -113,7 +112,7 @@ tallied_plot
 ```
 
 ```{r plot-time-driving-series}
-# produce a line plot of relative driving mobility across the state with 
+# produce a line plot of relative driving mobility across the state with
 # date on the x axis and mean relative mobility on the y axis
 timeseries_driving_plot <- long_subset %>%
   filter(transportation_type == "driving") %>%
@@ -148,7 +147,7 @@ timeseries_walking_plot <- long_subset %>%
   ggplot(aes(x = lubridate::ymd(Date),
               y = mean_mobility)) +
   geom_line(color = "steelblue") +
-  labs(title = paste("Statewide", 
+  labs(title = paste("Statewide",
                       "mean relative mobility walking levels in",
                       state_to_analyze,
                      "during COVID"),
