@@ -8,10 +8,10 @@ The goal of this project is to analyze the mobility data made by available by Ap
 The data is available from the following URL:
 https://covid19.apple.com/mobility
 
-Currently, it uses dplyr to work with the data. It will eventually use ggplot2 to visualize the dataset. 
+Uses dplyr to work with the data and also ggplot2 to visualize the dataset. 
 
 ### Change Log
-
+* 2021-03-14: Created an Rmarkdown file that can fully "knit" all the code plus some new ggplot2 codes into a well-organized html file
 * 2021-02-26: Added for loops to both state subset script and tally script, so the state subset code can subset multiple states and the tally code can use dplyr to tally and organize the states in terms of transportation types. 
 * 2021-02-26: Separated dplyr script into a function that the main script calls to
 * 2021-02-25: Created second script to use dplyr to tally up count of the cities and counties in a selected state that have different tranportation type data
