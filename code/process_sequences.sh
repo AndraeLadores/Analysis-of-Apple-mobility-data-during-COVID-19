@@ -22,7 +22,10 @@
  
 # Find a way to somehow only capture and then count ONLY the sequences. This is probably
 # a regular expression along with pipes!
+# Maybe use zgrep -v to find filter out anything but the sequences!
+	##`zgrep -v "[^A-Z] ...etc`
+	##`zgrep -v "genome$"
+	##`zgrep -v "genome$" | wc -l` This seems right, probably put defensive programming here
 
-
-
+# Why are there "N" in the sequences?
 
