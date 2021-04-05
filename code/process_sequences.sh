@@ -31,12 +31,25 @@
 
 # Using zcat to analyze the compressed fasta file, just to take a peek.
 cd /
+echo "cd /"
 echo "Initial cd to top most directory"
+
 cd /blast-db/sars-cov-2-seq-data/
+echo "/blast-db/sars-cov-2-seq-data/"
 echo "cd to go into blast-db folder"
 
 zcat 2021-04-05_ncbi_sars_cov_2_sequences.fasta.gz | head
+echo "zcat 2021-04-05_ncbi_sars_cov_2_sequences.fasta.gz"
 echo "This is zcat"
+
+#zgrep -v "genome$" 2021-04-05_ncbi_sars_cov_2_sequences.fasta.gz | wc -l
+#echo "This is how many sequences there are in total"
+
+# Build up on zgrep to somehow get only the country and their total count 
+#Find a way to get only the country name!
+
+echo "This is China numbers"
+zgrep "China" 2021-04-05_ncbi_sars_cov_2_sequences.fasta.gz | zgrep -v "genome$" | wc -l
 
 
 
