@@ -48,8 +48,17 @@ echo "This is zcat"
 # Build up on zgrep to somehow get only the country and their total count 
 #Find a way to get only the country name!
 
-echo "This is China numbers"
-zgrep "China" 2021-04-05_ncbi_sars_cov_2_sequences.fasta.gz | zgrep -v "genome$" | wc -l
+#echo "This is China numbers"
+#zgrep "China" 2021-04-05_ncbi_sars_cov_2_sequences.fasta.gz | zgrep -v "genome$" |\
+#wc -l | sed -E 's/(.*)/China \1/' 
+
+# This gives the same output
+# zgrep "China" 2021...etc | bioawk -c fastx '{print $seq}' | wc -l
 
 
+# figure out how to report and list all the countries with their given number of sequences
+country=(China, Iran)
+zgrep $country 2021-04-05_ncbi_sars_cov_2_sequences.fasta.gz | bioawk -c fastx '{print $seq}' | wc -l | sed -E 's/(.*)/'$country' \1/'
 
+
+#bioawk -c fastx '{/country/ print $seq}' 2021... | wc -l > country_sequences.txt
