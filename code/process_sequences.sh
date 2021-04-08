@@ -16,7 +16,7 @@ then
 	exit 1
 fi
 
-if [ $# > 0 ]
+if [ $# -gt 0 ]
 then
 
 	echo -e "${GRN}Success, please wait${NC}"
