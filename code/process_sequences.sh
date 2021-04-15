@@ -6,20 +6,36 @@
 # Created on April 4, 2021
 # Andrae Ladores - vcladores@dons.usfca.edu
 
+# Simple colors
 RED='\033[0;31m'
 NC='\033[0m'
 
+
+# Defensive coding to ensure that a file is selected
 if [ $# = 0 ]
 then
 	echo -e "${RED}WARNING${NC}: Please input necessary file as an argument"
+        echo -e "If you want more information, type 'MORE' after inputing the necessary file"
+	exit 1
+fi
+
+if [ "$2" != "MORE" ]
+then
+	# Tally up number of sequences from each country and tally from biggest to smallest
+	bioawk -c fastx '{print length($seq),$comment}' "$1" | awk '{split($0,a,"|"); print a[5]}' | sort | uniq -c | sort -k1,1nr
 	exit 1
 fi
 
 
-# Tally up number of sequences from each country and tally from biggest to smallest
-bioawk -c fastx '{print length($seq),$comment}' "$1" | awk '{split($0,a,"|"); print a[5]}' | sort | uniq -c | sort -k1,1nr
+# Fix this code, prob need to assign some variables to generalize everything
+if [ "$2" == "MORE" ]
+then
 
+        bioawk -c fastx '{print length($seq)}' "$1" | wc -l
+	echo "The number above is  the total number of sequences"
+	echo "########################################################################################################"
+	echo "########################################################################################################"
+	bioawk -c fastx '{print length($seq),$comment}' "$1" | awk '{split($0,a,"|"); print a[5]}' | sort | uniq -c | sort -k1,1nr
+	exit 1
+fi
 
-
-# Tally up number of sequences from each country and tally from biggest to smallest
-# bioawk -c fastx '{print length($seq),$comment}' "$1" | awk '{split($0,a,"|"); print a[5]}' | sort | uniq -c | sort -k1,1nr
