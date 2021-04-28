@@ -15,11 +15,11 @@ NC='\033[0m'
 if [ $# = 0 ]
 then
 	echo -e "${RED}WARNING${NC}: Please input necessary file as an argument"
-        echo -e "If you want more information, type 'MORE' after inputing the necessary file"
+        echo -e "If you want more information, type 'ALL' after inputing the necessary file"
 	exit 0
 fi
 
-if [ "$2" != "ADD" ]
+if [ "$2" != "ALL" ]
 then
 	# Tally up number of sequences from each country and tally from biggest to smallest
 	bioawk -c fastx '{print length($seq),$comment}' "$1" | awk '{split($0,a,"|"); print a[5]}' | sort | uniq -c | sort -k1,1nr
@@ -28,7 +28,7 @@ fi
 
 
 # Fix this code, prob need to assign some variables to generalize everything
-if [ "$2" = "ADD" ]
+if [ "$2" = "ALL" ]
 then
 
         bioawk -c fastx '{print length($seq)}' "$1" | wc -l
